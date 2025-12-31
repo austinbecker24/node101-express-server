@@ -1,7 +1,8 @@
 // import files and packages up here
 let morgan = require('morgan');
 let express = require('express');
-let topSpots = require('./data.json');
+const topSpots = require('./data.json');
+const {name, description, location} = topSpots;
 
 
 // create your express server below
@@ -17,9 +18,19 @@ app.get('/', function(req, res) {
     '<head><meta charset="utf-8"><title>Top Spots</title></head>' +
     '<body>' +
     '<h1>Top Spots</h1>' +
-    '<p>Find the best places to visit in San Diego.</p>' +
+    '<p>Find the <em><b>best</b></em> places to visit in San Diego.</p>' +
+    '<br><br>' +
+    '<ul>' +
+    topSpots.map(spot =>
+      `<li>
+        <h2>${spot.name}</h2>
+        <p><strong>Description:</strong> ${spot.description}</p>
+        <p><strong>Location:</strong> ${spot.location}</p>
+      </li>`
+    ).join('') +
+    '</ul>' +
     '</body>' +
-    '</html>'
+    '</html>' 
   );
 });
 
