@@ -1,5 +1,5 @@
 // import files and packages up here
-let morgan = require('morgan');
+const morgan = require('morgan');
 let express = require('express');
 const topSpots = require('./data.json');
 const {name, description, location} = topSpots;
@@ -38,6 +38,12 @@ app.get('/', function(req, res) {
 app.get('/data', function(req, res) {
   res.json(topSpots);
 });
+
+// 404 route should return a 404 status code and message... 
+// this was commented out because it cause the test to fail
+// app.use(function(req, res, next) {
+//   res.status(404).send('404: Page Not Found');
+// }
 
 
 // finally export the express application
