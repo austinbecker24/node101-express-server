@@ -2,7 +2,9 @@
 const morgan = require('morgan');
 let express = require('express');
 const topSpots = require('./data.json');
-const {name, description, location} = topSpots;
+
+// commented out this constnat as destructuring is not used
+//const {name, description, location} = topSpots;
 
 
 // create your express server below
